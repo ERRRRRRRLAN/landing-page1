@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "features": "Fitur",
+    "testimonials": "Testimoni",
+    "pricing": "Harga",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "title": "Transformasi Bisnis Anda",
+    "subtitle": "Solusi powerful yang membuat perbedaan",
+    "description": "Temukan produk dan layanan inovatif yang dirancang untuk memberdayakan kesuksesan Anda. Dibangun untuk komunitas, didorong oleh keunggulan.",
+    "ctaPrimary": "Mulai Sekarang",
+    "ctaSecondary": "Pelajari Lebih Lanjut"
+  },
+  "features": {
+    "title": "Mengapa Memilih Kami",
+    "subtitle": "Semua yang Anda butuhkan untuk sukses",
+    "items": {
+      "feature1": {
+        "title": "Solusi Inovatif",
+        "description": "Teknologi canggih yang dirancang untuk menyelesaikan masalah dunia nyata"
+      },
+      "feature2": {
+        "title": "Didorong Komunitas",
+        "description": "Dibangun bersama dan untuk komunitas, memastikan dampak maksimal"
+      },
+      "feature3": {
+        "title": "Mudah Digunakan",
+        "description": "Antarmuka intuitif yang bisa dikuasai siapa pun dalam hitungan menit"
+      },
+      "feature4": {
+        "title": "Dukungan 24/7",
+        "description": "Bantuan sepanjang waktu kapan pun Anda membutuhkannya"
+      },
+      "feature5": {
+        "title": "Platform Skalabel",
+        "description": "Tumbuh bersama bisnis Anda, dari startup hingga enterprise"
+      },
+      "feature6": {
+        "title": "Aman & Terpercaya",
+        "description": "Keamanan tingkat enterprise yang melindungi data Anda"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Apa Kata Mereka",
+    "subtitle": "Dipercaya oleh ribuan orang di seluruh dunia"
+  },
+  "pricing": {
+    "title": "Pilih Paket Anda",
+    "subtitle": "Harga fleksibel untuk setiap kebutuhan",
+    "monthly": "Bulanan",
+    "yearly": "Tahunan",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "Gratis",
+        "description": "Sempurna untuk memulai",
+        "features": [
+          "Fitur dasar",
+          "Dukungan komunitas",
+          "Hingga 5 proyek",
+          "Dukungan email"
+        ],
+        "cta": "Mulai Sekarang"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "Rp 450rb",
+        "description": "Untuk bisnis yang berkembang",
+        "features": [
+          "Semua fitur Starter",
+          "Dukungan prioritas",
+          "Proyek tanpa batas",
+          "Analitik lanjutan",
+          "Integrasi kustom"
+        ],
+        "cta": "Mulai Sekarang",
+        "popular": "Paling Populer"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Kustom",
+        "description": "Untuk organisasi besar",
+        "features": [
+          "Semua fitur Professional",
+          "Dukungan khusus",
+          "Solusi kustom",
+          "Jaminan SLA",
+          "Pelatihan & onboarding"
+        ],
+        "cta": "Hubungi Penjualan"
+      }
+    }
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Kami ingin mendengar dari Anda",
+    "form": {
+      "name": "Nama",
+      "email": "Email",
+      "message": "Pesan",
+      "submit": "Kirim Pesan",
+      "sending": "Mengirim...",
+      "success": "Pesan berhasil dikirim!",
+      "error": "Gagal mengirim pesan. Silakan coba lagi."
+    }
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi",
+    "links": {
+      "privacy": "Kebijakan Privasi",
+      "terms": "Syarat Layanan",
+      "about": "Tentang Kami"
+    }
+  }
+}
+

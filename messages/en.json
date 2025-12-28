@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform Your Business",
+    "subtitle": "Powerful solutions that make a difference",
+    "description": "Discover innovative products and services designed to empower your success. Built for the community, driven by excellence.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Learn More"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "subtitle": "Everything you need to succeed",
+    "items": {
+      "feature1": {
+        "title": "Innovative Solutions",
+        "description": "Cutting-edge technology designed to solve real-world problems"
+      },
+      "feature2": {
+        "title": "Community Driven",
+        "description": "Built with and for the community, ensuring maximum impact"
+      },
+      "feature3": {
+        "title": "Easy to Use",
+        "description": "Intuitive interface that anyone can master in minutes"
+      },
+      "feature4": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock assistance whenever you need it"
+      },
+      "feature5": {
+        "title": "Scalable Platform",
+        "description": "Grows with your business, from startup to enterprise"
+      },
+      "feature6": {
+        "title": "Secure & Reliable",
+        "description": "Enterprise-grade security protecting your data"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What People Say",
+    "subtitle": "Trusted by thousands worldwide"
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Flexible pricing for every need",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "Free",
+        "description": "Perfect for getting started",
+        "features": [
+          "Basic features",
+          "Community support",
+          "Up to 5 projects",
+          "Email support"
+        ],
+        "cta": "Get Started"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$29",
+        "description": "For growing businesses",
+        "features": [
+          "All Starter features",
+          "Priority support",
+          "Unlimited projects",
+          "Advanced analytics",
+          "Custom integrations"
+        ],
+        "cta": "Get Started",
+        "popular": "Most Popular"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "description": "For large organizations",
+        "features": [
+          "All Professional features",
+          "Dedicated support",
+          "Custom solutions",
+          "SLA guarantee",
+          "Training & onboarding"
+        ],
+        "cta": "Contact Sales"
+      }
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "We'd love to hear from you",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "about": "About Us"
+    }
+  }
+}
+
