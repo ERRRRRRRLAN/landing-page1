@@ -1,18 +1,18 @@
 /**
  * Next.js Configuration File
  * 
- * Konfigurasi untuk Next.js application.
- * Termasuk:
- * - Next-intl plugin untuk internationalization
+ * Configuration for Next.js application.
+ * Includes:
+ * - Next-intl plugin for internationalization
  * - React strict mode
  * - Image optimization settings
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
  * 1. Enable Image Optimization:
- *    - Baris 10-12: Hapus atau comment images config
- *    - Atau ubah unoptimized: true menjadi false
- *    - Tambah remotePatterns jika menggunakan external images:
+ *    - Lines 69-81: Remove or comment images config
+ *    - Or change unoptimized: true to false
+ *    - Add remotePatterns if using external images:
  *      images: {
  *        remotePatterns: [
  *          {
@@ -22,53 +22,53 @@
  *        ],
  *      }
  * 
- * 2. Tambah Environment Variables:
- *    - Tambah env: { ... } di nextConfig
- *    - Contoh: env: { CUSTOM_KEY: process.env.CUSTOM_KEY }
+ * 2. Add Environment Variables:
+ *    - Add env: { ... } in nextConfig
+ *    - Example: env: { CUSTOM_KEY: process.env.CUSTOM_KEY }
  * 
- * 3. Ubah Output Mode:
- *    - Tambah output: 'standalone' untuk Docker deployment
- *    - Atau output: 'export' untuk static export
+ * 3. Change Output Mode:
+ *    - Add output: 'standalone' for Docker deployment
+ *    - Or output: 'export' for static export
  * 
- * 4. Tambah Redirects:
- *    - Tambah async redirects() function
- *    - Contoh: redirects: async () => [{ source: '/old', destination: '/new', permanent: true }]
+ * 4. Add Redirects:
+ *    - Add async redirects() function
+ *    - Example: redirects: async () => [{ source: '/old', destination: '/new', permanent: true }]
  * 
- * 5. Tambah Rewrites:
- *    - Tambah async rewrites() function
- *    - Contoh: rewrites: async () => [{ source: '/api/:path*', destination: '/api/:path*' }]
+ * 5. Add Rewrites:
+ *    - Add async rewrites() function
+ *    - Example: rewrites: async () => [{ source: '/api/:path*', destination: '/api/:path*' }]
  * 
- * PENTING:
- * - Jangan hapus withNextIntl wrapper (diperlukan untuk next-intl)
- * - reactStrictMode: true membantu detect bugs (disarankan tetap true)
- * - Image optimization di-disable untuk mencegah error dengan external images
- * - Jika menggunakan Next.js Image dengan external images, setup remotePatterns
+ * IMPORTANT:
+ * - Do not remove withNextIntl wrapper (required for next-intl)
+ * - reactStrictMode: true helps detect bugs (recommended to keep true)
+ * - Image optimization is disabled to prevent errors with external images
+ * - If using Next.js Image with external images, setup remotePatterns
  * 
  * DEPENDENCIES:
- * - next-intl/plugin: untuk internationalization support
- * - i18n.ts: konfigurasi i18n yang di-load oleh plugin
+ * - next-intl/plugin: for internationalization support
+ * - i18n.ts: i18n configuration loaded by plugin
  * 
  * @type {import('next').NextConfig}
  */
 
 const createNextIntlPlugin = require('next-intl/plugin');
 
-// Setup next-intl plugin dengan konfigurasi dari i18n.ts
-// KUSTOMISASI: Ubah path './i18n.ts' jika file i18n berada di lokasi berbeda
+// Setup next-intl plugin with configuration from i18n.ts
+// CUSTOMIZATION: Change path './i18n.ts' if i18n file is in different location
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // React Strict Mode: membantu detect bugs dan masalah di development
-  // KUSTOMISASI: Ubah ke false jika tidak ingin strict mode (tidak direkomendasikan)
+  // React Strict Mode: helps detect bugs and issues in development
+  // CUSTOMIZATION: Change to false if you don't want strict mode (not recommended)
   reactStrictMode: true,
   
   // Image Optimization Configuration
-  // KUSTOMISASI: Enable image optimization jika menggunakan Next.js Image component
-  // Disable untuk mencegah error dengan external images yang tidak ada
+  // CUSTOMIZATION: Enable image optimization if using Next.js Image component
+  // Disabled to prevent errors with non-existent external images
   images: {
     unoptimized: true,  // Disable image optimization
-    // KUSTOMISASI: Jika ingin enable, ubah ke false dan tambah remotePatterns:
+    // CUSTOMIZATION: If you want to enable, change to false and add remotePatterns:
     /*
     remotePatterns: [
       {
@@ -80,15 +80,14 @@ const nextConfig = {
     */
   },
   
-  // KUSTOMISASI: Tambah konfigurasi lain di sini
-  // Contoh:
+  // CUSTOMIZATION: Add other configuration here
+  // Example:
   // env: {
   //   CUSTOM_KEY: process.env.CUSTOM_KEY,
   // },
-  // output: 'standalone', // Untuk Docker deployment
+  // output: 'standalone', // For Docker deployment
 }
 
-// Export config dengan next-intl plugin
-// PENTING: Jangan hapus withNextIntl wrapper
+// Export config with next-intl plugin
+// IMPORTANT: Do not remove withNextIntl wrapper
 module.exports = withNextIntl(nextConfig)
-

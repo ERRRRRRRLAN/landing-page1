@@ -1,53 +1,53 @@
 /**
  * Tailwind CSS Configuration
  * 
- * Konfigurasi untuk Tailwind CSS.
- * Termasuk:
- * - Content paths (file yang akan di-scan untuk classes)
+ * Configuration for Tailwind CSS.
+ * Includes:
+ * - Content paths (files that will be scanned for classes)
  * - Custom colors
  * - Custom fonts
- * - Custom animations dan keyframes
+ * - Custom animations and keyframes
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Ubah Custom Colors:
- *    - Baris 13-20: Edit warna primary dan secondary
- *    - Tambah warna baru: tertiary: { DEFAULT: '#...', light: '#...' }
- *    - Gunakan di component: className="bg-primary text-secondary"
+ * 1. Change Custom Colors:
+ *    - Lines 71-86: Edit primary and secondary colors
+ *    - Add new color: tertiary: { DEFAULT: '#...', light: '#...' }
+ *    - Use in component: className="bg-primary text-secondary"
  * 
- * 2. Ubah Font Family:
- *    - Baris 21-24: Edit font family
- *    - Tambah font baru: mono: ['var(--font-mono)', 'monospace']
- *    - Pastikan CSS variable didefinisikan di globals.css
+ * 2. Change Font Family:
+ *    - Lines 91-96: Edit font family
+ *    - Add new font: mono: ['var(--font-mono)', 'monospace']
+ *    - Make sure CSS variable is defined in globals.css
  * 
- * 3. Tambah Custom Animation:
- *    - Baris 25-30: Tambah animation baru
- *    - Baris 31-48: Tambah keyframes untuk animation
- *    - Contoh: 'bounce-slow': 'bounceSlow 2s infinite'
+ * 3. Add Custom Animation:
+ *    - Lines 101-108: Add new animation
+ *    - Lines 112-134: Add keyframes for animation
+ *    - Example: 'bounce-slow': 'bounceSlow 2s infinite'
  * 
- * 4. Tambah Content Paths:
- *    - Baris 5-9: Tambah path baru jika ada file di lokasi lain
- *    - Contoh: './src/**/*.{js,ts,jsx,tsx,mdx}'
+ * 4. Add Content Paths:
+ *    - Lines 60-64: Add new path if files are in different location
+ *    - Example: './src/**/*.{js,ts,jsx,tsx,mdx}'
  * 
- * 5. Tambah Tailwind Plugins:
- *    - Baris 49: Tambah plugin ke array
- *    - Contoh: plugins: [require('@tailwindcss/forms')]
- *    - Install plugin terlebih dahulu: npm install @tailwindcss/forms
+ * 5. Add Tailwind Plugins:
+ *    - Line 141: Add plugin to array
+ *    - Example: plugins: [require('@tailwindcss/forms')]
+ *    - Install plugin first: npm install @tailwindcss/forms
  * 
- * 6. Ubah Theme Defaults:
- *    - Tambah di theme.extend untuk override default Tailwind
- *    - Contoh: borderRadius: { '4xl': '2rem' }
+ * 6. Change Theme Defaults:
+ *    - Add in theme.extend to override default Tailwind
+ *    - Example: borderRadius: { '4xl': '2rem' }
  * 
- * PENTING:
- * - Content paths menentukan file mana yang di-scan untuk Tailwind classes
- * - Jika menambah file di lokasi baru, tambah path di content
- * - Custom colors bisa digunakan dengan bg-primary, text-primary, dll
- * - Font variables harus didefinisikan di globals.css
- * - Animasi harus memiliki keyframes yang sesuai
+ * IMPORTANT:
+ * - Content paths determine which files are scanned for Tailwind classes
+ * - If adding files in new location, add path in content
+ * - Custom colors can be used with bg-primary, text-primary, etc.
+ * - Font variables must be defined in globals.css
+ * - Animations must have corresponding keyframes
  * 
  * DEPENDENCIES:
- * - tailwindcss: package utama
- * - CSS variables dari globals.css untuk fonts
+ * - tailwindcss: main package
+ * - CSS variables from globals.css for fonts
  * 
  * @type {import('tailwindcss').Config}
  */
@@ -55,8 +55,8 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  // Content paths: file yang akan di-scan untuk Tailwind classes
-  // KUSTOMISASI: Tambah path baru jika ada file di lokasi lain
+  // Content paths: files that will be scanned for Tailwind classes
+  // CUSTOMIZATION: Add new path if files are in different location
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',           // Pages directory
     './components/**/*.{js,ts,jsx,tsx,mdx}',      // Components directory
@@ -66,18 +66,18 @@ const config: Config = {
   theme: {
     extend: {
       // Custom Colors
-      // KUSTOMISASI: Ubah atau tambah warna baru di sini
-      // Gunakan di component: className="bg-primary text-secondary"
+      // CUSTOMIZATION: Change or add new colors here
+      // Use in component: className="bg-primary text-secondary"
       colors: {
         primary: {
-          DEFAULT: '#000000',  // Warna primary default (hitam)
-          light: '#1a1a1a',    // Warna primary light
+          DEFAULT: '#000000',  // Default primary color (black)
+          light: '#1a1a1a',    // Light primary color
         },
         secondary: {
-          DEFAULT: '#ffffff',  // Warna secondary default (putih)
-          dark: '#f5f5f5',     // Warna secondary dark
+          DEFAULT: '#ffffff',  // Default secondary color (white)
+          dark: '#f5f5f5',     // Dark secondary color
         },
-        // Contoh tambah warna baru:
+        // Example add new color:
         // tertiary: {
         //   DEFAULT: '#3b82f6',
         //   light: '#60a5fa',
@@ -86,29 +86,29 @@ const config: Config = {
       },
       
       // Custom Font Families
-      // KUSTOMISASI: Ubah atau tambah font baru di sini
-      // Pastikan CSS variable didefinisikan di globals.css
+      // CUSTOMIZATION: Change or add new fonts here
+      // Make sure CSS variable is defined in globals.css
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],  // Font sans-serif
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],  // Font display
-        // Contoh tambah font baru:
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],  // Sans-serif font
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],  // Display font
+        // Example add new font:
         // mono: ['var(--font-mono)', 'monospace'],
       },
       
       // Custom Animations
-      // KUSTOMISASI: Tambah animation baru di sini
-      // Pastikan keyframes sudah didefinisikan di bawah
+      // CUSTOMIZATION: Add new animation here
+      // Make sure keyframes are defined below
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
         'slide-in-left': 'slideInLeft 0.6s ease-out',
         'slide-in-right': 'slideInRight 0.6s ease-out',
-        // Contoh tambah animation baru:
+        // Example add new animation:
         // 'bounce-slow': 'bounceSlow 2s infinite',
       },
       
-      // Custom Keyframes untuk Animations
-      // KUSTOMISASI: Tambah keyframes baru untuk animation di atas
+      // Custom Keyframes for Animations
+      // CUSTOMIZATION: Add new keyframes for animation above
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -126,7 +126,7 @@ const config: Config = {
           '0%': { transform: 'translateX(20px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
-        // Contoh tambah keyframes baru:
+        // Example add new keyframes:
         // bounceSlow: {
         //   '0%, 100%': { transform: 'translateY(0)' },
         //   '50%': { transform: 'translateY(-10px)' },
@@ -136,11 +136,10 @@ const config: Config = {
   },
   
   // Tailwind Plugins
-  // KUSTOMISASI: Tambah plugin baru di sini
-  // Install plugin terlebih dahulu: npm install @tailwindcss/forms
+  // CUSTOMIZATION: Add new plugins here
+  // Install plugin first: npm install @tailwindcss/forms
   plugins: [],
-  // Contoh: plugins: [require('@tailwindcss/forms')],
+  // Example: plugins: [require('@tailwindcss/forms')],
 }
 
 export default config
-

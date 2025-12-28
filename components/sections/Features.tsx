@@ -1,68 +1,68 @@
 /**
  * Features Section Component
  * 
- * Section yang menampilkan fitur-fitur produk/layanan dalam bentuk Bento Box grid.
- * Fitur:
- * - Grid layout responsif (1 kolom mobile, 2 kolom tablet, 3 kolom desktop)
- * - Animasi fade-in saat scroll ke section
- * - Hover effect yang mengubah warna card dari putih ke hitam
- * - Icon untuk setiap fitur
- * - Background pattern dengan gradient overlay
+ * Section that displays product/service features in a Bento Box grid layout.
+ * Features:
+ * - Responsive grid layout (1 column mobile, 2 columns tablet, 3 columns desktop)
+ * - Fade-in animation when scrolling to section
+ * - Hover effect that changes card color from white to black
+ * - Icon for each feature
+ * - Background pattern with gradient overlay
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Ubah Jumlah Fitur:
- *    - Baris 38-45: Tambah/kurangi item di array features
+ * 1. Change Number of Features:
+ *    - Lines 123-130: Add/remove items in features array
  *    - Format: { key: 'featureX', icon: IconComponent }
- *    - Pastikan 'featureX' ada di messages/en.json dan messages/id.json → features.items.featureX
+ *    - Make sure 'featureX' exists in messages/en.json and messages/id.json → features.items.featureX
  * 
- * 2. Ubah Icon Fitur:
- *    - Baris 7: Import icon baru dari lucide-react (contoh: Rocket, Lock, Globe)
- *    - Baris 9: Tambah icon ke array icons sesuai urutan
- *    - Baris 38-45: Assign icon ke feature (contoh: { key: 'feature1', icon: Rocket })
- *    - Lihat semua icon di: https://lucide.dev/icons/
+ * 2. Change Feature Icons:
+ *    - Line 76: Import new icon from lucide-react (example: Rocket, Lock, Globe)
+ *    - Line 81: Add icon to icons array in order
+ *    - Lines 123-130: Assign icon to feature (example: { key: 'feature1', icon: Rocket })
+ *    - See all icons at: https://lucide.dev/icons/
  * 
- * 3. Ubah Teks Fitur:
- *    - Edit messages/en.json dan messages/id.json → section "features"
- *    - title: Judul section (contoh: "Why Choose Us")
- *    - subtitle: Subjudul section
- *    - items.feature1.title: Judul fitur 1
- *    - items.feature1.description: Deskripsi fitur 1
- *    - Ulangi untuk feature2, feature3, dll
+ * 3. Change Feature Text:
+ *    - Edit messages/en.json and messages/id.json → section "features"
+ *    - title: Section title (example: "Why Choose Us")
+ *    - subtitle: Section subtitle
+ *    - items.feature1.title: Feature 1 title
+ *    - items.feature1.description: Feature 1 description
+ *    - Repeat for feature2, feature3, etc.
  * 
- * 4. Ubah Layout Grid:
- *    - Baris 81: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
- *    - Ubah angka untuk jumlah kolom berbeda
- *    - Contoh: lg:grid-cols-4 untuk 4 kolom di desktop
+ * 4. Change Grid Layout:
+ *    - Line 166: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+ *    - Change numbers for different column counts
+ *    - Example: lg:grid-cols-4 for 4 columns on desktop
  * 
- * 5. Ubah Warna Background:
- *    - Baris 48: bg-gradient-to-b from-white via-gray-50 to-white
- *    - Baris 93: bg-gradient-to-br from-white to-gray-50 (card normal)
- *    - Baris 94: hover:from-black hover:via-gray-900 hover:to-black (card hover)
+ * 5. Change Background Color:
+ *    - Line 133: bg-gradient-to-b from-white via-gray-50 to-white
+ *    - Line 182: bg-gradient-to-br from-white to-gray-50 (normal card)
+ *    - Line 183: hover:from-black hover:via-gray-900 hover:to-black (card hover)
  * 
- * 6. Ubah Warna Icon Container:
- *    - Baris 114: bg-gradient-to-br from-black to-gray-800 (normal)
- *    - Baris 114: group-hover:from-white group-hover:to-gray-100 (hover)
+ * 6. Change Icon Container Color:
+ *    - Line 204: bg-gradient-to-br from-black to-gray-800 (normal)
+ *    - Line 204: group-hover:from-white group-hover:to-gray-100 (hover)
  * 
- * 7. Ubah Animasi:
- *    - Baris 16-36: Edit containerVariants dan itemVariants
- *    - Baris 110: Edit whileHover untuk efek hover icon
+ * 7. Change Animations:
+ *    - Lines 96-117: Edit containerVariants and itemVariants
+ *    - Line 200: Edit whileHover for icon hover effect
  * 
- * 8. Ubah Card yang Lebih Besar:
- *    - Baris 85: isLarge = index === 0 || index === 2
- *    - Ubah index untuk menentukan card mana yang lebih besar
- *    - Atau hapus logika ini untuk ukuran seragam
+ * 8. Change Larger Cards:
+ *    - Line 174: isLarge = index === 0 || index === 2
+ *    - Change index to determine which cards are larger
+ *    - Or remove this logic for uniform size
  * 
- * PENTING:
- * - Jumlah fitur maksimal 6 (feature1-feature6) sesuai struktur default
- * - Jika menambah fitur lebih dari 6, pastikan ada di messages/en.json dan messages/id.json
- * - Pastikan jumlah icon di array icons sama dengan jumlah fitur
- * - Key di features array harus match dengan key di messages JSON
+ * IMPORTANT:
+ * - Maximum 6 features (feature1-feature6) according to default structure
+ * - If adding more than 6 features, make sure they exist in messages/en.json and messages/id.json
+ * - Make sure number of icons in icons array matches number of features
+ * - Keys in features array must match keys in messages JSON
  * 
  * DEPENDENCIES:
- * - next-intl: untuk multi-language support
- * - framer-motion: untuk animasi dan scroll detection
- * - lucide-react: untuk icons
+ * - next-intl: for multi-language support
+ * - framer-motion: for animations and scroll detection
+ * - lucide-react: for icons
  * 
  * @returns {JSX.Element} Features section component
  */
@@ -75,40 +75,40 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Zap, Users, MousePointerClick, Headphones, TrendingUp, Shield } from 'lucide-react';
 
-// Array icon yang akan digunakan untuk fitur
-// KUSTOMISASI: Import icon baru dari lucide-react dan tambah ke array ini
-// Lihat semua icon di: https://lucide.dev/icons/
+// Array of icons to be used for features
+// CUSTOMIZATION: Import new icon from lucide-react and add to this array
+// See all icons at: https://lucide.dev/icons/
 const icons = [Zap, Users, MousePointerClick, Headphones, TrendingUp, Shield];
 
 export default function Features() {
-  // Hook untuk mengambil terjemahan dari file messages → section "features"
+  // Hook to get translations from messages files → section "features"
   const t = useTranslations('features');
   
-  // Ref untuk mendeteksi apakah section sudah masuk viewport
+  // Ref to detect if section has entered viewport
   const ref = useRef(null);
   
-  // Hook untuk check apakah element sudah dalam viewport
-  // once: true = animasi hanya sekali
-  // margin: '-100px' = trigger animasi 100px sebelum element masuk viewport
+  // Hook to check if element is in viewport
+  // once: true = animation only once
+  // margin: '-100px' = trigger animation 100px before element enters viewport
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // Variants untuk animasi container (mengatur timing animasi card)
+  // Variants for container animation (controls timing of card animations)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,  // Delay 0.1s antar card
+        staggerChildren: 0.1,  // 0.1s delay between cards
       },
     },
   };
 
-  // Variants untuk animasi card individual
+  // Variants for individual card animation
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },  // Mulai dari bawah (50px) dan invisible
+    hidden: { opacity: 0, y: 50 },  // Start from bottom (50px) and invisible
     visible: {
       opacity: 1,
-      y: 0,                          // Akhir: posisi normal
+      y: 0,                          // End: normal position
       transition: {
         duration: 0.6,
         ease: [0.6, -0.05, 0.01, 0.99],
@@ -116,10 +116,10 @@ export default function Features() {
     },
   };
 
-  // Array fitur yang akan ditampilkan
-  // KUSTOMISASI: Tambah/kurangi fitur di sini
+  // Array of features to display
+  // CUSTOMIZATION: Add/remove features here
   // Format: { key: 'featureX', icon: IconComponent }
-  // Pastikan 'featureX' ada di messages/en.json dan messages/id.json → features.items.featureX
+  // Make sure 'featureX' exists in messages/en.json and messages/id.json → features.items.featureX
   const features = [
     { key: 'feature1', icon: Zap },
     { key: 'feature2', icon: Users },
@@ -165,39 +165,39 @@ export default function Features() {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {/* Render setiap fitur sebagai card */}
+          {/* Render each feature as a card */}
           {features.map((feature, index) => {
-            const Icon = feature.icon;  // Ambil icon component
+            const Icon = feature.icon;  // Get icon component
             
-            // KUSTOMISASI: Tentukan card mana yang lebih besar
-            // Saat ini: card index 0 dan 2 lebih besar di tablet
+            // CUSTOMIZATION: Determine which cards are larger
+            // Currently: cards at index 0 and 2 are larger on tablet
             const isLarge = index === 0 || index === 2;
             
             return (
               <motion.div
                 key={feature.key}
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}  // Efek naik dan zoom saat hover
+                whileHover={{ y: -8, scale: 1.02 }}  // Lift and zoom effect on hover
                 className={`
                   group relative p-8 bg-gradient-to-br from-white to-gray-50 border-2 border-black rounded-2xl
                   hover:bg-gradient-to-br hover:from-black hover:via-gray-900 hover:to-black hover:text-white transition-all duration-300
-                  ${isLarge ? 'md:col-span-2 lg:col-span-1' : ''}  // Span 2 kolom di tablet jika isLarge
+                  ${isLarge ? 'md:col-span-2 lg:col-span-1' : ''}  // Span 2 columns on tablet if isLarge
                   cursor-pointer shadow-lg
                 `}
               >
-                {/* Hover Effect Background (gradient hitam yang muncul saat hover) */}
+                {/* Hover Effect Background (black gradient that appears on hover) */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl"
-                  initial={{ scale: 0, opacity: 0 }}    // Mulai dari scale 0 dan invisible
-                  whileHover={{ scale: 1, opacity: 1 }} // Scale ke 1 dan visible saat hover
+                  initial={{ scale: 0, opacity: 0 }}    // Start from scale 0 and invisible
+                  whileHover={{ scale: 1, opacity: 1 }} // Scale to 1 and visible on hover
                   transition={{ duration: 0.3 }}
                 />
                 
                 <div className="relative z-10">
                   {/* Icon Container */}
-                  {/* KUSTOMISASI: Ubah ukuran icon dengan mengubah size={32} */}
+                  {/* CUSTOMIZATION: Change icon size by modifying size={32} */}
                   <motion.div
-                    whileHover={{ rotate: [0, -10, 10, -10, 0] }}  // Animasi shake saat hover
+                    whileHover={{ rotate: [0, -10, 10, -10, 0] }}  // Shake animation on hover
                     transition={{ duration: 0.5 }}
                     className="mb-6"
                   >
@@ -207,19 +207,19 @@ export default function Features() {
                   </motion.div>
 
                   {/* Feature Title */}
-                  {/* Teks diambil dari messages/en.json → features.items.{feature.key}.title */}
+                  {/* Text is taken from messages/en.json → features.items.{feature.key}.title */}
                   <h3 className="text-2xl font-bold mb-3 group-hover:text-white transition-colors duration-300">
                     {t(`items.${feature.key}.title`)}
                   </h3>
                   
                   {/* Feature Description */}
-                  {/* Teks diambil dari messages/en.json → features.items.{feature.key}.description */}
+                  {/* Text is taken from messages/en.json → features.items.{feature.key}.description */}
                   <p className="text-black/70 group-hover:text-white/80 transition-colors duration-300 leading-relaxed">
                     {t(`items.${feature.key}.description`)}
                   </p>
                 </div>
 
-                {/* Corner Accent (dekorasi sudut kanan atas) */}
+                {/* Corner Accent (top-right corner decoration) */}
                 <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-black group-hover:border-white rounded-tr-2xl transition-colors duration-300" />
               </motion.div>
             );
@@ -229,4 +229,3 @@ export default function Features() {
     </section>
   );
 }
-

@@ -1,65 +1,64 @@
 /**
  * Routing Configuration
  * 
- * Konfigurasi untuk routing dan internationalization.
- * Digunakan oleh:
- * - next-intl untuk multi-language routing
- * - Middleware untuk locale detection
- * - Layout untuk generate static params
+ * Configuration for routing and internationalization.
+ * Used by:
+ * - next-intl for multi-language routing
+ * - Middleware for locale detection
+ * - Layout for generating static params
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Tambah Locale Baru:
- *    - Baris 11: Tambah locale baru ke array locales
- *    - Contoh: locales: ['en', 'id', 'es'] untuk menambah Spanish
- *    - Pastikan file messages/{locale}.json ada (contoh: messages/es.json)
- *    - Copy struktur dari messages/en.json dan translate
+ * 1. Add New Locale:
+ *    - Line 52: Add new locale to locales array
+ *    - Example: locales: ['en', 'id', 'es'] to add Spanish
+ *    - Make sure messages/{locale}.json file exists (example: messages/es.json)
+ *    - Copy structure from messages/en.json and translate
  * 
- * 2. Ubah Default Locale:
- *    - Baris 12: defaultLocale: 'en'
- *    - Ubah 'en' dengan locale yang ingin menjadi default
- *    - Pastikan locale ada di array locales
+ * 2. Change Default Locale:
+ *    - Line 56: defaultLocale: 'en'
+ *    - Change 'en' with locale you want as default
+ *    - Make sure locale exists in locales array
  * 
- * 3. Ubah Locale Prefix Strategy:
- *    - Baris 13: localePrefix: 'as-needed'
- *    - 'as-needed': Hanya tampilkan locale di URL jika bukan default (contoh: /id/... tapi / untuk en)
- *    - 'always': Selalu tampilkan locale di URL (contoh: /en/..., /id/...)
- *    - 'never': Tidak pernah tampilkan locale di URL (tidak direkomendasikan untuk multi-language)
+ * 3. Change Locale Prefix Strategy:
+ *    - Line 63: localePrefix: 'as-needed'
+ *    - 'as-needed': Only show locale in URL if not default (example: /id/... but / for en)
+ *    - 'always': Always show locale in URL (example: /en/..., /id/...)
+ *    - 'never': Never show locale in URL (not recommended for multi-language)
  * 
- * PENTING:
- * - Locale code harus lowercase dan mengikuti format ISO 639-1 (2 huruf)
- * - Pastikan setiap locale memiliki file messages/{locale}.json
- * - Default locale harus ada di array locales
- * - Jangan ubah 'as const' (diperlukan untuk TypeScript type safety)
+ * IMPORTANT:
+ * - Locale code must be lowercase and follow ISO 639-1 format (2 letters)
+ * - Make sure each locale has messages/{locale}.json file
+ * - Default locale must exist in locales array
+ * - Do not change 'as const' (required for TypeScript type safety)
  * 
- * CONTOH PENGGUNAAN:
- * - locales: ['en', 'id'] → English dan Indonesian
+ * USAGE EXAMPLES:
+ * - locales: ['en', 'id'] → English and Indonesian
  * - locales: ['en', 'id', 'es', 'fr'] → English, Indonesian, Spanish, French
  * 
  * DEPENDENCIES:
- * - next-intl: menggunakan konfigurasi ini untuk routing
- * - messages/{locale}.json: file translation untuk setiap locale
+ * - next-intl: uses this configuration for routing
+ * - messages/{locale}.json: translation file for each locale
  * 
  * @type {Object}
- * @property {readonly string[]} locales - Array locale yang didukung
- * @property {readonly string} defaultLocale - Locale default
- * @property {readonly 'as-needed' | 'always' | 'never'} localePrefix - Strategy untuk locale prefix di URL
+ * @property {readonly string[]} locales - Array of supported locales
+ * @property {readonly string} defaultLocale - Default locale
+ * @property {readonly 'as-needed' | 'always' | 'never'} localePrefix - Strategy for locale prefix in URL
  */
 
 export const routing = {
-  // Array locale yang didukung
-  // KUSTOMISASI: Tambah locale baru di sini (contoh: 'es' untuk Spanish)
+  // Array of supported locales
+  // CUSTOMIZATION: Add new locale here (example: 'es' for Spanish)
   locales: ['en', 'id'] as const,
   
-  // Locale default (akan digunakan jika locale tidak valid atau tidak ditentukan)
-  // KUSTOMISASI: Ubah dengan locale yang ingin menjadi default
+  // Default locale (will be used if locale is invalid or not specified)
+  // CUSTOMIZATION: Change with locale you want as default
   defaultLocale: 'en' as const,
   
   // Locale prefix strategy
-  // 'as-needed': Hanya tampilkan locale jika bukan default (contoh: /id/... tapi / untuk en)
-  // 'always': Selalu tampilkan locale di URL (contoh: /en/..., /id/...)
-  // 'never': Tidak pernah tampilkan locale di URL (tidak direkomendasikan)
-  // KUSTOMISASI: Ubah strategy sesuai kebutuhan
+  // 'as-needed': Only show locale if not default (example: /id/... but / for en)
+  // 'always': Always show locale in URL (example: /en/..., /id/...)
+  // 'never': Never show locale in URL (not recommended)
+  // CUSTOMIZATION: Change strategy as needed
   localePrefix: 'as-needed' as const
 };
-

@@ -1,71 +1,71 @@
 /**
  * Pricing Section Component
  * 
- * Section yang menampilkan paket harga/pricing plans.
- * Fitur:
- * - Toggle bulanan/tahunan (monthly/yearly)
+ * Section that displays pricing plans/packages.
+ * Features:
+ * - Monthly/yearly toggle (monthly/yearly)
  * - 3 pricing cards (Starter, Professional, Enterprise)
- * - Card tengah (Professional) ditandai sebagai "Most Popular"
- * - Animasi fade-in saat scroll ke section
- * - Hover effect dengan scale dan shadow
- * - Background gradient terang dengan pattern
+ * - Middle card (Professional) marked as "Most Popular"
+ * - Fade-in animation when scrolling to section
+ * - Hover effect with scale and shadow
+ * - Light gradient background with pattern
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Ubah Jumlah Plan:
- *    - Baris 16: Edit array plans (contoh: ['basic', 'pro', 'enterprise'])
- *    - Pastikan setiap plan ada di messages/en.json dan messages/id.json → pricing.plans.{planKey}
+ * 1. Change Number of Plans:
+ *    - Line 99: Edit plans array (example: ['basic', 'pro', 'enterprise'])
+ *    - Make sure each plan exists in messages/en.json and messages/id.json → pricing.plans.{planKey}
  * 
- * 2. Ubah Teks Plan:
- *    - Edit messages/en.json dan messages/id.json → section "pricing"
- *    - title: Judul section (contoh: "Choose Your Plan")
- *    - subtitle: Subjudul section
- *    - monthly: Teks untuk "Monthly"
- *    - yearly: Teks untuk "Yearly"
- *    - plans.starter.name: Nama plan Starter
- *    - plans.starter.price: Harga (contoh: "$9", "Free", "Custom")
- *    - plans.starter.description: Deskripsi plan
- *    - plans.starter.features: Array fitur (contoh: ["Feature 1", "Feature 2"])
- *    - plans.starter.cta: Teks tombol (contoh: "Get Started")
- *    - plans.professional.popular: Teks badge "Most Popular" (hanya untuk plan tengah)
+ * 2. Change Plan Text:
+ *    - Edit messages/en.json and messages/id.json → section "pricing"
+ *    - title: Section title (example: "Choose Your Plan")
+ *    - subtitle: Section subtitle
+ *    - monthly: Text for "Monthly"
+ *    - yearly: Text for "Yearly"
+ *    - plans.starter.name: Starter plan name
+ *    - plans.starter.price: Price (example: "$9", "Free", "Custom")
+ *    - plans.starter.description: Plan description
+ *    - plans.starter.features: Array of features (example: ["Feature 1", "Feature 2"])
+ *    - plans.starter.cta: Button text (example: "Get Started")
+ *    - plans.professional.popular: "Most Popular" badge text (only for middle plan)
  * 
- * 3. Ubah Plan yang "Popular":
- *    - Baris 99: isPopular = planKey === 'professional'
- *    - Ubah 'professional' dengan key plan yang ingin ditandai sebagai popular
+ * 3. Change "Popular" Plan:
+ *    - Line 193: isPopular = planKey === 'professional'
+ *    - Change 'professional' with plan key you want to mark as popular
  * 
- * 4. Ubah Warna Background:
- *    - Baris 41: bg-gradient-to-b from-white via-gray-50 to-white
- *    - Baris 109: bg-gradient-to-br from-black via-gray-900 to-black (card popular)
- *    - Baris 110: bg-gradient-to-br from-white to-gray-50 (card normal)
+ * 4. Change Background Color:
+ *    - Line 124: bg-gradient-to-b from-white via-gray-50 to-white
+ *    - Line 203: bg-gradient-to-br from-black via-gray-900 to-black (popular card)
+ *    - Line 204: bg-gradient-to-br from-white to-gray-50 (normal card)
  * 
- * 5. Ubah Layout Grid:
- *    - Baris 95: grid-cols-1 md:grid-cols-3
- *    - Ubah angka untuk jumlah kolom berbeda
+ * 5. Change Grid Layout:
+ *    - Line 184: grid-cols-1 md:grid-cols-3
+ *    - Change numbers for different column counts
  * 
- * 6. Ubah Toggle Billing:
- *    - Baris 12: const [isYearly, setIsYearly] = useState(false);
- *    - Ubah false menjadi true jika ingin default tahunan
- *    - Atau nonaktifkan toggle dengan menghapus baris 68-87
+ * 6. Change Billing Toggle:
+ *    - Line 88: const [isYearly, setIsYearly] = useState(false);
+ *    - Change false to true if you want yearly as default
+ *    - Or disable toggle by removing lines 153-175
  * 
- * 7. Ubah Link Tombol CTA:
- *    - Baris 156: href={planKey === 'enterprise' ? '#contact' : '#contact'}
- *    - Ubah dengan link tujuan yang sesuai
+ * 7. Change CTA Button Link:
+ *    - Line 254: href={planKey === 'enterprise' ? '#contact' : '#contact'}
+ *    - Change with appropriate destination link
  * 
- * 8. Ubah Harga Berdasarkan Toggle:
- *    - Saat ini hanya menampilkan "/month" atau "/year" di belakang harga
- *    - Untuk mengubah harga berdasarkan toggle, edit logic di baris 135-139
+ * 8. Change Price Based on Toggle:
+ *    - Currently only displays "/month" or "/year" after price
+ *    - To change price based on toggle, edit logic at lines 229-235
  * 
- * PENTING:
- * - Plan tengah (index 1) otomatis menjadi "Most Popular" jika isPopular = true
- * - Pastikan semua plan key ada di messages/en.json dan messages/id.json
- * - Harga bisa berupa: "$X", "Free", "Custom", atau format lain
- * - Features harus array of strings
- * - Popular badge hanya untuk plan tengah
+ * IMPORTANT:
+ * - Middle plan (index 1) automatically becomes "Most Popular" if isPopular = true
+ * - Make sure all plan keys exist in messages/en.json and messages/id.json
+ * - Price can be: "$X", "Free", "Custom", or other format
+ * - Features must be array of strings
+ * - Popular badge is only for middle plan
  * 
  * DEPENDENCIES:
- * - next-intl: untuk multi-language support
- * - framer-motion: untuk animasi dan scroll detection
- * - lucide-react: untuk icons (Check, Sparkles)
+ * - next-intl: for multi-language support
+ * - framer-motion: for animations and scroll detection
+ * - lucide-react: for icons (Check, Sparkles)
  * 
  * @returns {JSX.Element} Pricing section component
  */
@@ -80,22 +80,22 @@ import { useRef } from 'react';
 import { Check, Sparkles } from 'lucide-react';
 
 export default function Pricing() {
-  // Hook untuk mengambil terjemahan dari file messages → section "pricing"
+  // Hook to get translations from messages files → section "pricing"
   const t = useTranslations('pricing');
   
-  // State untuk toggle billing period (monthly/yearly)
-  // KUSTOMISASI: Ubah false menjadi true jika ingin default tahunan
+  // State for billing period toggle (monthly/yearly)
+  // CUSTOMIZATION: Change false to true if you want yearly as default
   const [isYearly, setIsYearly] = useState(false);
   
-  // Ref untuk mendeteksi apakah section sudah masuk viewport
+  // Ref to detect if section has entered viewport
   const ref = useRef(null);
   
-  // Hook untuk check apakah element sudah dalam viewport
+  // Hook to check if element is in viewport
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // Array plan keys yang akan ditampilkan
-  // KUSTOMISASI: Tambah/kurangi plan di sini
-  // Pastikan setiap key ada di messages/en.json dan messages/id.json → pricing.plans.{key}
+  // Array of plan keys to display
+  // CUSTOMIZATION: Add/remove plans here
+  // Make sure each key exists in messages/en.json and messages/id.json → pricing.plans.{key}
   const plans = ['starter', 'professional', 'enterprise'];
 
   const containerVariants = {
@@ -149,7 +149,7 @@ export default function Pricing() {
           </p>
 
           {/* Billing Toggle (Monthly/Yearly) */}
-          {/* KUSTOMISASI: Hapus section ini jika tidak ingin toggle billing */}
+          {/* CUSTOMIZATION: Remove this section if you don't want billing toggle */}
           <div className="flex items-center justify-center gap-4">
             {/* Label Monthly */}
             <span className={`text-sm font-medium ${!isYearly ? 'text-black' : 'text-black/40'}`}>
@@ -161,9 +161,9 @@ export default function Pricing() {
               className="relative w-14 h-8 bg-black rounded-full p-1 transition-colors"
               aria-label="Toggle billing period"
             >
-              {/* Toggle Circle (animasi slide) */}
+              {/* Toggle Circle (slide animation) */}
               <motion.div
-                animate={{ x: isYearly ? 24 : 0 }}  // Slide ke kanan jika yearly, ke kiri jika monthly
+                animate={{ x: isYearly ? 24 : 0 }}  // Slide right if yearly, left if monthly
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 className="w-6 h-6 bg-white rounded-full"
               />
@@ -176,20 +176,20 @@ export default function Pricing() {
         </motion.div>
 
         {/* Pricing Cards Grid */}
-        {/* KUSTOMISASI: Ubah grid-cols-3 menjadi grid-cols-4 untuk 4 kolom */}
+        {/* CUSTOMIZATION: Change grid-cols-3 to grid-cols-4 for 4 columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {/* Render setiap plan sebagai card */}
+          {/* Render each plan as a card */}
           {plans.map((planKey, index) => {
-            // Ambil data plan dari translation file
+            // Get plan data from translation file
             const plan = t.raw(`plans.${planKey}`);
             
-            // KUSTOMISASI: Tentukan plan mana yang ditandai sebagai "Popular"
-            // Plan tengah (professional) otomatis menjadi popular
+            // CUSTOMIZATION: Determine which plan is marked as "Popular"
+            // Middle plan (professional) automatically becomes popular
             const isPopular = planKey === 'professional';
 
             return (
@@ -225,17 +225,17 @@ export default function Pricing() {
                 <p className="text-sm opacity-70 mb-6">{plan.description}</p>
 
                 {/* Price Display */}
-                {/* KUSTOMISASI: Untuk mengubah harga berdasarkan toggle, edit logic di sini */}
+                {/* CUSTOMIZATION: To change price based on toggle, edit logic here */}
                 <div className="mb-6">
                   <span className="text-5xl font-bold">{plan.price}</span>
-                  {/* Tampilkan "/month" atau "/year" jika harga bukan Free/Custom */}
+                  {/* Display "/month" or "/year" if price is not Free/Custom */}
                   {plan.price !== 'Free' && plan.price !== 'Custom' && plan.price !== 'Gratis' && plan.price !== 'Kustom' && (
                     <span className="text-lg opacity-70">/{isYearly ? 'year' : 'month'}</span>
                   )}
                 </div>
 
                 {/* Features List */}
-                {/* Menampilkan daftar fitur dengan icon checkmark */}
+                {/* Display list of features with checkmark icon */}
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature: string, idx: number) => (
                     <li key={idx} className="flex items-start gap-3">
@@ -249,7 +249,7 @@ export default function Pricing() {
                 </ul>
 
                 {/* CTA Button */}
-                {/* KUSTOMISASI: Ubah href dengan link tujuan yang sesuai */}
+                {/* CUSTOMIZATION: Change href with appropriate destination link */}
                 <motion.a
                   href={planKey === 'enterprise' ? '#contact' : '#contact'}
                   whileHover={{ scale: 1.05 }}
@@ -257,8 +257,8 @@ export default function Pricing() {
                   className={`
                     block w-full text-center py-4 font-semibold rounded-lg transition-all duration-300
                     ${isPopular
-                      ? 'bg-white text-black hover:bg-white/90'  // Tombol putih untuk popular plan
-                      : 'bg-black text-white hover:bg-black/90 border-2 border-black'  // Tombol hitam untuk plan lain
+                      ? 'bg-white text-black hover:bg-white/90'  // White button for popular plan
+                      : 'bg-black text-white hover:bg-black/90 border-2 border-black'  // Black button for other plans
                     }
                   `}
                 >
@@ -278,4 +278,3 @@ export default function Pricing() {
     </section>
   );
 }
-

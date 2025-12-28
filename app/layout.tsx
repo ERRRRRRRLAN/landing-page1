@@ -1,116 +1,116 @@
 /**
  * Root Layout Component
  * 
- * Layout root untuk seluruh aplikasi Next.js.
- * Fitur:
- * - Mengatur font (Inter dari Google Fonts)
- * - Mengatur metadata SEO (title, description, keywords, Open Graph)
- * - Mengatur viewport untuk responsive
- * - Mengatur global styles
+ * Root layout for the entire Next.js application.
+ * Features:
+ * - Sets up font (Inter from Google Fonts)
+ * - Sets up SEO metadata (title, description, keywords, Open Graph)
+ * - Sets up viewport for responsive
+ * - Sets up global styles
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Ubah SEO Metadata:
- *    - Baris 11-25: Edit semua metadata untuk SEO
- *    - title: Judul halaman (muncul di browser tab dan search results)
- *    - description: Deskripsi halaman (muncul di search results)
- *    - keywords: Kata kunci untuk SEO (pisahkan dengan koma)
- *    - authors: Nama author/perusahaan
- *    - openGraph: Metadata untuk social media sharing (Facebook, Twitter, dll)
- *    - robots: Aturan untuk search engine crawler
+ * 1. Change SEO Metadata:
+ *    - Lines 77-108: Edit all metadata for SEO
+ *    - title: Page title (appears in browser tab and search results)
+ *    - description: Page description (appears in search results)
+ *    - keywords: Keywords for SEO (separate with commas)
+ *    - authors: Author/company name
+ *    - openGraph: Metadata for social media sharing (Facebook, Twitter, etc.)
+ *    - robots: Rules for search engine crawler
  * 
- * 2. Ubah Font:
- *    - Baris 5-9: Import font berbeda dari Google Fonts
- *    - Contoh: import { Roboto } from 'next/font/google'
- *    - Ganti Inter dengan Roboto
- *    - Atau gunakan font lokal dengan @font-face di globals.css
+ * 2. Change Font:
+ *    - Lines 64-70: Import different font from Google Fonts
+ *    - Example: import { Roboto } from 'next/font/google'
+ *    - Replace Inter with Roboto
+ *    - Or use local font with @font-face in globals.css
  * 
- * 3. Ubah Warna Background Global:
- *    - Baris 40: bg-white → bg-gray-50 atau warna lain
- *    - Atau ubah di globals.css untuk lebih fleksibel
+ * 3. Change Global Background Color:
+ *    - Line 129: bg-white → bg-gray-50 or other color
+ *    - Or change in globals.css for more flexibility
  * 
- * 4. Ubah Warna Teks Global:
- *    - Baris 40: text-black → text-gray-900 atau warna lain
+ * 4. Change Global Text Color:
+ *    - Line 129: text-black → text-gray-900 or other color
  * 
- * 5. Tambah Font Lain:
- *    - Import font baru (contoh: import { Poppins } from 'next/font/google')
- *    - Tambah ke className body jika diperlukan
+ * 5. Add Other Fonts:
+ *    - Import new font (example: import { Poppins } from 'next/font/google')
+ *    - Add to body className if needed
  * 
- * 6. Ubah Language HTML:
- *    - Baris 39: lang="en" → lang="id" atau lang lainnya
- *    - Atau buat dinamis berdasarkan locale
+ * 6. Change HTML Language:
+ *    - Line 126: lang="en" → lang="id" or other language
+ *    - Or make dynamic based on locale
  * 
- * PENTING:
- * - Metadata sangat penting untuk SEO, pastikan diisi dengan benar
- * - Title sebaiknya maksimal 60 karakter
- * - Description sebaiknya maksimal 160 karakter
- * - Open Graph image bisa ditambahkan di openGraph.images
- * - Viewport harus terpisah (Next.js 14 requirement)
- * - Font variable (--font-inter) digunakan di Tailwind config
+ * IMPORTANT:
+ * - Metadata is very important for SEO, make sure to fill correctly
+ * - Title should be maximum 60 characters
+ * - Description should be maximum 160 characters
+ * - Open Graph image can be added in openGraph.images
+ * - Viewport must be separate (Next.js 14 requirement)
+ * - Font variable (--font-inter) is used in Tailwind config
  * 
  * DEPENDENCIES:
- * - next/font/google: untuk Google Fonts
- * - globals.css: untuk global styles
+ * - next/font/google: for Google Fonts
+ * - globals.css: for global styles
  * 
  * @param {Object} props - Component props
  * @param {ReactNode} props.children - Child components
- * @returns {JSX.Element} Root layout dengan HTML structure
+ * @returns {JSX.Element} Root layout with HTML structure
  */
 
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
-// Konfigurasi font Inter dari Google Fonts
-// KUSTOMISASI: Ganti dengan font lain jika diinginkan
+// Inter font configuration from Google Fonts
+// CUSTOMIZATION: Replace with other font if desired
 const inter = Inter({ 
-  subsets: ['latin'],           // Subset karakter yang di-load
-  variable: '--font-inter',    // CSS variable name (digunakan di Tailwind)
-  display: 'swap',              // Font display strategy (swap = tampilkan fallback dulu)
+  subsets: ['latin'],           // Character subset to load
+  variable: '--font-inter',    // CSS variable name (used in Tailwind)
+  display: 'swap',              // Font display strategy (swap = show fallback first)
 });
 
 /**
  * SEO Metadata
- * KUSTOMISASI: Edit semua metadata untuk SEO yang lebih baik
- * Pastikan title dan description relevan dengan konten website
+ * CUSTOMIZATION: Edit all metadata for better SEO
+ * Make sure title and description are relevant to website content
  */
 export const metadata: Metadata = {
-  // Title halaman (muncul di browser tab dan search results)
-  // KUSTOMISASI: Ganti dengan title yang relevan
+  // Page title (appears in browser tab and search results)
+  // CUSTOMIZATION: Replace with relevant title
   title: 'Transform Your Business | Innovative Solutions',
   
-  // Deskripsi halaman (muncul di search results)
-  // KUSTOMISASI: Ganti dengan deskripsi yang relevan (maksimal 160 karakter)
+  // Page description (appears in search results)
+  // CUSTOMIZATION: Replace with relevant description (maximum 160 characters)
   description: 'Discover innovative products and services designed to empower your success. Built for the community, driven by excellence.',
   
-  // Keywords untuk SEO (pisahkan dengan koma)
-  // KUSTOMISASI: Ganti dengan keywords yang relevan
+  // Keywords for SEO (separate with commas)
+  // CUSTOMIZATION: Replace with relevant keywords
   keywords: 'business solutions, innovation, community, technology',
   
-  // Author/Perusahaan
-  // KUSTOMISASI: Ganti dengan nama author/perusahaan Anda
+  // Author/Company
+  // CUSTOMIZATION: Replace with your author/company name
   authors: [{ name: 'Your Company' }],
   
-  // Open Graph metadata (untuk social media sharing)
-  // KUSTOMISASI: Tambah images jika diperlukan
+  // Open Graph metadata (for social media sharing)
+  // CUSTOMIZATION: Add images if needed
   openGraph: {
     title: 'Transform Your Business | Innovative Solutions',
     description: 'Discover innovative products and services designed to empower your success.',
     type: 'website',
-    // images: [{ url: '/og-image.jpg' }], // Uncomment dan tambah OG image
+    // images: [{ url: '/og-image.jpg' }], // Uncomment and add OG image
   },
   
-  // Aturan untuk search engine crawler
+  // Rules for search engine crawler
   robots: {
-    index: true,   // Izinkan indexing
-    follow: true,  // Izinkan follow links
+    index: true,   // Allow indexing
+    follow: true,  // Allow follow links
   },
 };
 
 /**
  * Viewport Configuration
- * PENTING: Harus terpisah dari metadata (Next.js 14 requirement)
- * KUSTOMISASI: Ubah jika diperlukan untuk responsive behavior berbeda
+ * IMPORTANT: Must be separate from metadata (Next.js 14 requirement)
+ * CUSTOMIZATION: Change if needed for different responsive behavior
  */
 export const viewport: Viewport = {
   width: 'device-width',
@@ -124,19 +124,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      {/* KUSTOMISASI: Ubah lang="en" dengan bahasa default Anda */}
-      {/* scroll-smooth: Smooth scroll behavior untuk anchor links */}
+      {/* CUSTOMIZATION: Change lang="en" with your default language */}
+      {/* scroll-smooth: Smooth scroll behavior for anchor links */}
       <body className={`${inter.variable} font-sans antialiased bg-white text-black`}>
         {/* 
-          inter.variable: CSS variable untuk font (digunakan di Tailwind)
-          font-sans: Font family sans-serif
+          inter.variable: CSS variable for font (used in Tailwind)
+          font-sans: Sans-serif font family
           antialiased: Smooth font rendering
-          bg-white: Background putih
-          text-black: Teks hitam
+          bg-white: White background
+          text-black: Black text
         */}
         {children}
       </body>
     </html>
   );
 }
-

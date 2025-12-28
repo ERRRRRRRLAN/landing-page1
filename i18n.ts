@@ -1,65 +1,64 @@
 /**
  * Internationalization (i18n) Configuration
  * 
- * File konfigurasi untuk next-intl (multi-language support).
- * Fungsi:
- * - Load messages berdasarkan locale
- * - Validasi locale yang valid
- * - Fallback ke default locale jika locale tidak valid
+ * Configuration file for next-intl (multi-language support).
+ * Functions:
+ * - Load messages based on locale
+ * - Validate valid locale
+ * - Fallback to default locale if locale is invalid
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Tambah Locale Baru:
- *    - Edit routing.ts untuk menambah locale baru
- *    - Buat file messages/{locale}.json (contoh: messages/es.json untuk Spanish)
- *    - Copy struktur dari messages/en.json dan translate
- *    - File ini akan otomatis load locale baru
+ * 1. Add New Locale:
+ *    - Edit routing.ts to add new locale
+ *    - Create file messages/{locale}.json (example: messages/es.json for Spanish)
+ *    - Copy structure from messages/en.json and translate
+ *    - This file will automatically load new locale
  * 
- * 2. Ubah Default Locale:
+ * 2. Change Default Locale:
  *    - Edit routing.ts → defaultLocale
- *    - File ini akan otomatis menggunakan defaultLocale dari routing.ts
+ *    - This file will automatically use defaultLocale from routing.ts
  * 
- * 3. Ubah Path Messages:
- *    - Baris 15: `./messages/${locale}.json`
- *    - Ubah path jika file messages berada di lokasi berbeda
+ * 3. Change Messages Path:
+ *    - Line 60: `./messages/${locale}.json`
+ *    - Change path if messages files are in different location
  * 
- * PENTING:
- * - Jangan ubah struktur fungsi ini (diperlukan oleh next-intl)
- * - Pastikan routing.ts sudah dikonfigurasi dengan benar
- * - Pastikan file messages/{locale}.json ada untuk setiap locale
- * - Locale yang tidak valid akan fallback ke defaultLocale
+ * IMPORTANT:
+ * - Do not change function structure (required by next-intl)
+ * - Make sure routing.ts is configured correctly
+ * - Make sure messages/{locale}.json file exists for each locale
+ * - Invalid locale will fallback to defaultLocale
  * 
  * DEPENDENCIES:
- * - next-intl/server: untuk getRequestConfig
- * - routing.ts: untuk konfigurasi locale
- * - messages/{locale}.json: file translation untuk setiap locale
+ * - next-intl/server: for getRequestConfig
+ * - routing.ts: for locale configuration
+ * - messages/{locale}.json: translation file for each locale
  * 
- * @param {Object} config - Configuration object dari next-intl
- * @param {Promise<string>} config.requestLocale - Locale dari request
- * @returns {Promise<Object>} Configuration object dengan locale dan messages
+ * @param {Object} config - Configuration object from next-intl
+ * @param {Promise<string>} config.requestLocale - Locale from request
+ * @returns {Promise<Object>} Configuration object with locale and messages
  */
 
 import { getRequestConfig } from 'next-intl/server';
 import { routing } from './routing';
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  // Ambil locale dari request
-  // Locale biasanya dari segment [locale] di URL
+  // Get locale from request
+  // Locale is usually from [locale] segment in URL
   let locale = await requestLocale;
 
-  // Validasi locale: jika tidak valid atau tidak ada, gunakan default locale
-  // KUSTOMISASI: Locale valid diambil dari routing.ts
+  // Validate locale: if invalid or doesn't exist, use default locale
+  // CUSTOMIZATION: Valid locales are taken from routing.ts
   if (!locale || !routing.locales.includes(locale as any)) {
     locale = routing.defaultLocale;
   }
 
-  // Return configuration dengan locale dan messages
-  // Messages di-load dari file messages/{locale}.json
+  // Return configuration with locale and messages
+  // Messages are loaded from messages/{locale}.json file
   return {
     locale,
     messages: (await import(`./messages/${locale}.json`)).default
-    // KUSTOMISASI: Ubah path jika file messages berada di lokasi berbeda
-    // Contoh: `./locales/${locale}/messages.json`
+    // CUSTOMIZATION: Change path if messages files are in different location
+    // Example: `./locales/${locale}/messages.json`
   };
 });
-

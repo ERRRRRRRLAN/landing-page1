@@ -1,46 +1,46 @@
 /**
  * Home Page Component
  * 
- * Halaman utama yang menggabungkan semua section.
- * Urutan section:
- * 1. Hero - Section utama di bagian atas
- * 2. Features - Grid fitur produk/layanan
- * 3. Testimonials - Testimoni pelanggan
- * 4. Pricing - Paket harga
- * 5. Contact - Form kontak
+ * Main page that combines all sections.
+ * Section order:
+ * 1. Hero - Main section at the top
+ * 2. Features - Product/service features grid
+ * 3. Testimonials - Customer testimonials
+ * 4. Pricing - Pricing packages
+ * 5. Contact - Contact form
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Tambah Section Baru:
- *    - Import component section baru (contoh: import About from '@/components/sections/About')
- *    - Tambah <About /> di dalam return
- *    - Pastikan component ada di folder components/sections/
+ * 1. Add New Section:
+ *    - Import new section component (example: import About from '@/components/sections/About')
+ *    - Add <About /> inside return
+ *    - Make sure component exists in components/sections/ folder
  * 
- * 2. Hapus Section:
- *    - Hapus import component yang tidak diinginkan
- *    - Hapus <ComponentName /> dari return
+ * 2. Remove Section:
+ *    - Remove import of unwanted component
+ *    - Remove <ComponentName /> from return
  * 
- * 3. Ubah Urutan Section:
- *    - Pindahkan <ComponentName /> ke posisi yang diinginkan
- *    - Urutan saat ini: Hero → Features → Testimonials → Pricing → Contact
+ * 3. Change Section Order:
+ *    - Move <ComponentName /> to desired position
+ *    - Current order: Hero → Features → Testimonials → Pricing → Contact
  * 
- * 4. Tambah Wrapper/Section Kustom:
- *    - Tambah div atau section wrapper jika diperlukan
- *    - Contoh: <div className="custom-wrapper"><Hero /></div>
+ * 4. Add Custom Wrapper/Section:
+ *    - Add div or section wrapper if needed
+ *    - Example: <div className="custom-wrapper"><Hero /></div>
  * 
- * PENTING:
- * - Semua section harus memiliki id yang sesuai dengan href di Navigation
- * - Pastikan Hero section memiliki id="hero"
- * - Pastikan Features section memiliki id="features"
- * - Pastikan Testimonials section memiliki id="testimonials"
- * - Pastikan Pricing section memiliki id="pricing"
- * - Pastikan Contact section memiliki id="contact"
- * - Jika menambah section baru, pastikan ada di Navigation.tsx juga
+ * IMPORTANT:
+ * - All sections must have id that matches href in Navigation
+ * - Make sure Hero section has id="hero"
+ * - Make sure Features section has id="features"
+ * - Make sure Testimonials section has id="testimonials"
+ * - Make sure Pricing section has id="pricing"
+ * - Make sure Contact section has id="contact"
+ * - If adding new section, make sure it's also in Navigation.tsx
  * 
  * DEPENDENCIES:
- * - Semua component section dari @/components/sections/
+ * - All section components from @/components/sections/
  * 
- * @returns {JSX.Element} Home page dengan semua section
+ * @returns {JSX.Element} Home page with all sections
  */
 
 import Hero from '@/components/sections/Hero';
@@ -52,21 +52,20 @@ import Contact from '@/components/sections/Contact';
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section - Section utama di bagian atas */}
+      {/* Hero Section - Main section at the top */}
       <Hero />
       
-      {/* Features Section - Grid fitur produk/layanan */}
+      {/* Features Section - Product/service features grid */}
       <Features />
       
-      {/* Testimonials Section - Testimoni pelanggan */}
+      {/* Testimonials Section - Customer testimonials */}
       <Testimonials />
       
-      {/* Pricing Section - Paket harga */}
+      {/* Pricing Section - Pricing packages */}
       <Pricing />
       
-      {/* Contact Section - Form kontak */}
+      {/* Contact Section - Contact form */}
       <Contact />
     </>
   );
 }
-

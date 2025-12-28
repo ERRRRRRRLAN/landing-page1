@@ -1,42 +1,42 @@
 /**
  * Next.js Middleware
  * 
- * Middleware untuk menangani:
+ * Middleware to handle:
  * - Internationalization routing (next-intl)
  * - Blocking unwanted image requests (unsplash.com spam prevention)
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Tambah Blocking Rules:
- *    - Baris 13-18: Tambah kondisi blocking baru
- *    - Contoh: Block request dari domain tertentu
- *    - Contoh: Block request dengan pattern tertentu
+ * 1. Add Blocking Rules:
+ *    - Lines 59-65: Add new blocking condition
+ *    - Example: Block requests from certain domain
+ *    - Example: Block requests with certain pattern
  * 
- * 2. Ubah Locale Prefix:
+ * 2. Change Locale Prefix:
  *    - Edit routing.ts → localePrefix
- *    - 'as-needed': Hanya tampilkan locale di URL jika bukan default
- *    - 'always': Selalu tampilkan locale di URL
- *    - 'never': Tidak pernah tampilkan locale di URL
+ *    - 'as-needed': Only show locale in URL if not default
+ *    - 'always': Always show locale in URL
+ *    - 'never': Never show locale in URL
  * 
- * 3. Nonaktifkan Image Blocking:
- *    - Hapus baris 13-18 jika tidak ingin block unsplash requests
- *    - Atau ubah kondisi untuk block domain lain
+ * 3. Disable Image Blocking:
+ *    - Remove lines 59-65 if you don't want to block unsplash requests
+ *    - Or change condition to block other domains
  * 
- * 4. Tambah Redirect Rules:
- *    - Tambah logic redirect sebelum return intlMiddleware
- *    - Contoh: Redirect /old-path ke /new-path
+ * 4. Add Redirect Rules:
+ *    - Add redirect logic before return intlMiddleware
+ *    - Example: Redirect /old-path to /new-path
  * 
- * PENTING:
- * - Jangan hapus intlMiddleware (diperlukan untuk routing multi-language)
- * - Matcher config menentukan route mana yang diproses middleware
- * - Image blocking hanya untuk mencegah spam request ke unsplash.com
- * - Jika tidak menggunakan external images, bisa nonaktifkan blocking
+ * IMPORTANT:
+ * - Do not remove intlMiddleware (required for multi-language routing)
+ * - Matcher config determines which routes are processed by middleware
+ * - Image blocking is only to prevent spam requests to unsplash.com
+ * - If not using external images, can disable blocking
  * 
  * DEPENDENCIES:
- * - next-intl/middleware: untuk internationalization routing
- * - routing.ts: untuk konfigurasi locale
+ * - next-intl/middleware: for internationalization routing
+ * - routing.ts: for locale configuration
  * 
- * @param {NextRequest} request - Request object dari Next.js
+ * @param {NextRequest} request - Request object from Next.js
  * @returns {NextResponse} Response object
  */
 
@@ -45,51 +45,50 @@ import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './routing';
 
 // Setup internationalization middleware
-// KUSTOMISASI: Konfigurasi locale diambil dari routing.ts
+// CUSTOMIZATION: Locale configuration is taken from routing.ts
 const intlMiddleware = createMiddleware({
-  locales: routing.locales,              // Array locale yang didukung
-  defaultLocale: routing.defaultLocale,  // Locale default
+  locales: routing.locales,              // Array of supported locales
+  defaultLocale: routing.defaultLocale,  // Default locale
   localePrefix: routing.localePrefix     // Prefix strategy (as-needed, always, never)
 });
 
 export default function middleware(request: NextRequest) {
   // Block unsplash image requests to prevent spam
-  // KUSTOMISASI: Hapus atau ubah kondisi ini jika tidak diperlukan
-  // Atau tambah blocking untuk domain lain
+  // CUSTOMIZATION: Remove or change this condition if not needed
+  // Or add blocking for other domains
   if (request.nextUrl.pathname.startsWith('/_next/image')) {
     const imageUrl = request.nextUrl.searchParams.get('url');
     if (imageUrl?.includes('unsplash.com')) {
-      // Return 404 untuk block request ke unsplash.com
+      // Return 404 to block request to unsplash.com
       return new NextResponse(null, { status: 404 });
     }
   }
 
-  // KUSTOMISASI: Tambah logic middleware lain di sini sebelum return
-  // Contoh: Redirect, authentication check, dll
+  // CUSTOMIZATION: Add other middleware logic here before return
+  // Example: Redirect, authentication check, etc.
 
   // Return internationalization middleware
-  // Ini akan menangani routing untuk multi-language
+  // This will handle routing for multi-language
   return intlMiddleware(request);
 }
 
 /**
  * Middleware Matcher Configuration
- * Menentukan route mana yang akan diproses oleh middleware ini
+ * Determines which routes will be processed by this middleware
  * 
- * KUSTOMISASI: Tambah pattern baru jika diperlukan
+ * CUSTOMIZATION: Add new pattern if needed
  */
 export const config = {
   matcher: [
-    // Match semua route kecuali:
+    // Match all routes except:
     // - /api (API routes)
     // - /_next/static (static files)
     // - /_next/webpack-hmr (webpack hot reload)
     // - /_vercel (Vercel internal)
-    // - Files dengan extension (.*\\..*)
+    // - Files with extension (.*\\..*)
     '/((?!api|_next/static|_next/webpack-hmr|_vercel|.*\\..*).*)',
     
-    // Include /_next/image untuk block unsplash requests
+    // Include /_next/image to block unsplash requests
     '/_next/image'
   ]
 };
-

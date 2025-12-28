@@ -1,67 +1,67 @@
 /**
  * Testimonials Section Component
  * 
- * Section yang menampilkan testimoni/testimonial dari pelanggan.
- * Fitur:
- * - Grid layout 2 kolom (1 kolom di mobile)
- * - Rating bintang untuk setiap testimoni
- * - Avatar dengan inisial nama
- * - Animasi fade-in saat scroll ke section
- * - Hover effect dengan scale dan shadow
- * - Background gradient gelap dengan efek blur
+ * Section that displays customer testimonials/reviews.
+ * Features:
+ * - 2-column grid layout (1 column on mobile)
+ * - Star rating for each testimonial
+ * - Avatar with name initials
+ * - Fade-in animation when scrolling to section
+ * - Hover effect with scale and shadow
+ * - Dark gradient background with blur effect
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Tambah/Kurangi Testimoni:
- *    - Baris 9-38: Edit array testimonials
- *    - Format setiap testimoni:
+ * 1. Add/Remove Testimonials:
+ *    - Lines 80-109: Edit testimonials array
+ *    - Format for each testimonial:
  *      {
- *        name: 'Nama Lengkap',           // Nama pelanggan
- *        role: 'Jabatan, Nama Perusahaan', // Jabatan dan perusahaan
- *        content: 'Teks testimoni...',   // Isi testimoni (dalam quotes)
- *        rating: 5,                      // Rating 1-5 (jumlah bintang)
- *        avatar: 'NK',                   // Inisial untuk avatar (2 huruf)
+ *        name: 'Full Name',                    // Customer name
+ *        role: 'Job Title, Company Name',      // Job title and company
+ *        content: 'Testimonial text...',       // Testimonial content (in quotes)
+ *        rating: 5,                            // Rating 1-5 (number of stars)
+ *        avatar: 'FN',                         // Initials for avatar (2 letters)
  *      }
  * 
- * 2. Ubah Teks Section:
- *    - Edit messages/en.json dan messages/id.json → section "testimonials"
- *    - title: Judul section (contoh: "What Our Customers Say")
- *    - subtitle: Subjudul section
+ * 2. Change Section Text:
+ *    - Edit messages/en.json and messages/id.json → section "testimonials"
+ *    - title: Section title (example: "What Our Customers Say")
+ *    - subtitle: Section subtitle
  * 
- * 3. Ubah Layout Grid:
- *    - Baris 73: grid-cols-1 md:grid-cols-2
- *    - Ubah md:grid-cols-2 menjadi md:grid-cols-3 untuk 3 kolom di desktop
+ * 3. Change Grid Layout:
+ *    - Line 150: grid-cols-1 md:grid-cols-2
+ *    - Change md:grid-cols-2 to md:grid-cols-3 for 3 columns on desktop
  * 
- * 4. Ubah Warna Background:
- *    - Baris 46: bg-gradient-to-br from-black via-gray-900 to-black
- *    - Contoh: from-blue-900 via-blue-800 to-blue-900 untuk biru gelap
+ * 4. Change Background Color:
+ *    - Line 122: bg-gradient-to-br from-black via-gray-900 to-black
+ *    - Example: from-blue-900 via-blue-800 to-blue-900 for dark blue
  * 
- * 5. Ubah Warna Card:
- *    - Baris 81: bg-gradient-to-br from-white/5 via-white/3 to-white/5
- *    - Ubah opacity (angka setelah /) untuk mengubah transparansi
+ * 5. Change Card Color:
+ *    - Line 159: bg-gradient-to-br from-white/5 via-white/3 to-white/5
+ *    - Change opacity (number after /) to change transparency
  * 
- * 6. Ubah Rating:
- *    - Baris 14, 21, 28, 35: rating: 5
- *    - Ubah angka 1-5 untuk jumlah bintang
+ * 6. Change Rating:
+ *    - Lines 85, 92, 99, 106: rating: 5
+ *    - Change number 1-5 for number of stars
  * 
- * 7. Ubah Avatar:
- *    - Baris 15, 22, 29, 36: avatar: 'SJ'
- *    - Gunakan 2 huruf inisial nama pelanggan
+ * 7. Change Avatar:
+ *    - Lines 86, 93, 100, 107: avatar: 'SJ'
+ *    - Use 2-letter initials of customer name
  * 
- * 8. Nonaktifkan Quote Icon:
- *    - Hapus baris 83-86 jika tidak ingin menampilkan icon quote
+ * 8. Disable Quote Icon:
+ *    - Remove lines 163-165 if you don't want to display quote icon
  * 
- * PENTING:
- * - Pastikan content testimoni dalam quotes ('' atau "")
- * - Rating harus angka 1-5
- * - Avatar harus 2 karakter (inisial)
- * - Nama dan role harus jelas dan profesional
- * - Teks title dan subtitle harus ada di messages/en.json dan messages/id.json
+ * IMPORTANT:
+ * - Make sure testimonial content is in quotes ('' or "")
+ * - Rating must be number 1-5
+ * - Avatar must be 2 characters (initials)
+ * - Name and role must be clear and professional
+ * - Title and subtitle text must exist in messages/en.json and messages/id.json
  * 
  * DEPENDENCIES:
- * - next-intl: untuk multi-language support
- * - framer-motion: untuk animasi dan scroll detection
- * - lucide-react: untuk icons (Quote, Star)
+ * - next-intl: for multi-language support
+ * - framer-motion: for animations and scroll detection
+ * - lucide-react: for icons (Quote, Star)
  * 
  * @returns {JSX.Element} Testimonials section component
  */
@@ -74,16 +74,16 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Quote, Star } from 'lucide-react';
 
-// Array testimoni pelanggan
-// KUSTOMISASI: Tambah/kurangi/edit testimoni di sini
-// Format: { name, role, content, rating (1-5), avatar (2 huruf inisial) }
+// Array of customer testimonials
+// CUSTOMIZATION: Add/remove/edit testimonials here
+// Format: { name, role, content, rating (1-5), avatar (2-letter initials) }
 const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'CEO, TechStart Inc.',
     content: 'This platform has completely transformed how we operate. The innovative solutions and community support are unmatched.',
-    rating: 5,        // Rating 1-5 bintang
-    avatar: 'SJ',     // Inisial untuk avatar (2 huruf)
+    rating: 5,        // Rating 1-5 stars
+    avatar: 'SJ',     // Initials for avatar (2 letters)
   },
   {
     name: 'Michael Chen',
@@ -109,13 +109,13 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  // Hook untuk mengambil terjemahan dari file messages → section "testimonials"
+  // Hook to get translations from messages files → section "testimonials"
   const t = useTranslations('testimonials');
   
-  // Ref untuk mendeteksi apakah section sudah masuk viewport
+  // Ref to detect if section has entered viewport
   const ref = useRef(null);
   
-  // Hook untuk check apakah element sudah dalam viewport
+  // Hook to check if element is in viewport
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
@@ -146,26 +146,26 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonials Grid */}
-        {/* KUSTOMISASI: Ubah grid-cols-2 menjadi grid-cols-3 untuk 3 kolom di desktop */}
+        {/* CUSTOMIZATION: Change grid-cols-2 to grid-cols-3 for 3 columns on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Render setiap testimoni sebagai card */}
+          {/* Render each testimonial as a card */}
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}                    // Mulai dari bawah dan invisible
-              animate={isInView ? { opacity: 1, y: 0 } : {}}    // Animasi ke visible saat masuk viewport
-              transition={{ duration: 0.6, delay: index * 0.1 }} // Delay berdasarkan index untuk efek stagger
-              whileHover={{ y: -8, scale: 1.02 }}              // Efek naik dan zoom saat hover
+              initial={{ opacity: 0, y: 50 }}                    // Start from bottom and invisible
+              animate={isInView ? { opacity: 1, y: 0 } : {}}    // Animate to visible when entering viewport
+              transition={{ duration: 0.6, delay: index * 0.1 }} // Delay based on index for stagger effect
+              whileHover={{ y: -8, scale: 1.02 }}              // Lift and zoom effect on hover
               className="relative p-8 bg-gradient-to-br from-white/5 via-white/3 to-white/5 backdrop-blur-sm border-2 border-white/10 rounded-2xl hover:border-white/30 hover:bg-gradient-to-br hover:from-white/10 hover:via-white/5 hover:to-white/10 transition-all duration-300 shadow-lg"
             >
-              {/* Quote Icon (dekorasi) */}
-              {/* KUSTOMISASI: Hapus section ini jika tidak ingin menampilkan icon quote */}
+              {/* Quote Icon (decoration) */}
+              {/* CUSTOMIZATION: Remove this section if you don't want to display quote icon */}
               <div className="absolute top-6 right-6 opacity-20">
                 <Quote size={48} />
               </div>
 
               {/* Rating Stars */}
-              {/* Menampilkan bintang sesuai rating (1-5) */}
+              {/* Display stars according to rating (1-5) */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} size={20} className="fill-white text-white" />
@@ -173,26 +173,26 @@ export default function Testimonials() {
               </div>
 
               {/* Testimonial Content */}
-              {/* KUSTOMISASI: Teks testimoni diambil dari array testimonials */}
+              {/* CUSTOMIZATION: Testimonial text is taken from testimonials array */}
               <p className="text-white/90 mb-6 text-lg leading-relaxed relative z-10">
                 "{testimonial.content}"
               </p>
 
               {/* Author Info */}
-              {/* Menampilkan avatar (inisial) dan informasi pelanggan */}
+              {/* Display avatar (initials) and customer information */}
               <div className="flex items-center gap-4">
-                {/* Avatar Circle dengan Inisial */}
+                {/* Avatar Circle with Initials */}
                 <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-bold text-lg">
                   {testimonial.avatar}
                 </div>
-                {/* Nama dan Jabatan */}
+                {/* Name and Job Title */}
                 <div>
                   <div className="font-semibold text-white">{testimonial.name}</div>
                   <div className="text-white/60 text-sm">{testimonial.role}</div>
                 </div>
               </div>
 
-              {/* Corner Accent (dekorasi sudut kiri bawah) */}
+              {/* Corner Accent (bottom-left corner decoration) */}
               <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-white/20 rounded-bl-2xl" />
             </motion.div>
           ))}
@@ -201,4 +201,3 @@ export default function Testimonials() {
     </section>
   );
 }
-
