@@ -27,7 +27,7 @@
  * 
  * 4. Add Content Paths:
  *    - Lines 60-64: Add new path if files are in different location
- *    - Example: './src/**/*.{js,ts,jsx,tsx,mdx}'
+ *    - Example: './src/components/*.{js,ts,jsx,tsx,mdx}'
  * 
  * 5. Add Tailwind Plugins:
  *    - Line 141: Add plugin to array
@@ -48,8 +48,6 @@
  * DEPENDENCIES:
  * - tailwindcss: main package
  * - CSS variables from globals.css for fonts
- * 
- * @type {import('tailwindcss').Config}
  */
 
 import type { Config } from 'tailwindcss'
