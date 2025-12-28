@@ -1,46 +1,128 @@
+/**
+ * Global CSS Styles
+ * 
+ * File ini berisi global styles untuk seluruh aplikasi.
+ * Termasuk:
+ * - Tailwind CSS directives
+ * - CSS variables (font, colors, dll)
+ * - Custom scrollbar styling
+ * - Accessibility styles (focus visible)
+ * 
+ * KUSTOMISASI MUDAH:
+ * 
+ * 1. Ubah Warna Background Global:
+ *    - Baris 15: @apply bg-white → @apply bg-gray-50 atau warna lain
+ * 
+ * 2. Ubah Warna Teks Global:
+ *    - Baris 15: @apply text-black → @apply text-gray-900 atau warna lain
+ * 
+ * 3. Ubah Custom Scrollbar:
+ *    - Baris 26-40: Edit styling scrollbar
+ *    - width: 10px → ubah lebar scrollbar
+ *    - bg-black/20 → ubah warna scrollbar thumb
+ *    - bg-black/30 → ubah warna scrollbar thumb saat hover
+ * 
+ * 4. Ubah Focus Styles:
+ *    - Baris 43-45: Edit styling untuk focus visible
+ *    - outline-black → ubah warna outline
+ *    - outline-2 → ubah ketebalan outline
+ * 
+ * 5. Tambah CSS Variables:
+ *    - Baris 6-8: Tambah variable baru di :root
+ *    - Contoh: --primary-color: #000000;
+ *    - Gunakan di Tailwind config atau component
+ * 
+ * 6. Tambah Custom Utilities:
+ *    - Baris 19-23: Tambah utility class baru
+ *    - Contoh: .custom-gradient { background: linear-gradient(...); }
+ * 
+ * 7. Ubah Scroll Behavior:
+ *    - Baris 11: scroll-behavior: smooth → ubah ke auto jika tidak ingin smooth scroll
+ * 
+ * PENTING:
+ * - Jangan hapus @tailwind directives (diperlukan untuk Tailwind CSS)
+ * - CSS variables harus didefinisikan di :root untuk bisa digunakan di seluruh app
+ * - Custom scrollbar hanya bekerja di browser WebKit (Chrome, Safari, Edge)
+ * - Focus styles penting untuk accessibility (jangan dihapus)
+ * 
+ * DEPENDENCIES:
+ * - Tailwind CSS: untuk utility classes
+ */
+
+/* Tailwind CSS Directives */
+/* PENTING: Jangan hapus atau ubah urutan ini */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base Layer - Global styles dan CSS variables */
 @layer base {
+  /* CSS Variables */
+  /* KUSTOMISASI: Tambah variable baru di sini jika diperlukan */
   :root {
     --font-inter: 'Inter', system-ui, sans-serif;
+    /* Contoh tambah variable:
+       --primary-color: #000000;
+       --secondary-color: #ffffff;
+    */
   }
 
+  /* HTML Global Styles */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;  /* Smooth scroll untuk anchor links */
+    /* KUSTOMISASI: Ubah ke 'auto' jika tidak ingin smooth scroll */
   }
 
+  /* Body Global Styles */
+  /* KUSTOMISASI: Ubah warna background dan teks di sini */
   body {
     @apply bg-white text-black;
+    /* Contoh: @apply bg-gray-50 text-gray-900; */
   }
 }
 
+/* Utilities Layer - Custom utility classes */
 @layer utilities {
+  /* Text Balance Utility */
+  /* Utility untuk balance text wrapping (mencegah orphan words) */
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* KUSTOMISASI: Tambah utility class baru di sini */
+  /* Contoh:
+     .custom-gradient {
+       background: linear-gradient(to right, #000, #fff);
+     }
+  */
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar Styling */
+/* Hanya bekerja di browser WebKit (Chrome, Safari, Edge) */
+/* KUSTOMISASI: Ubah styling scrollbar di sini */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 10px;  /* Lebar scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-white;
+  @apply bg-white;  /* Warna track scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-black/20 rounded-full;
+  @apply bg-black/20 rounded-full;  /* Warna thumb scrollbar (20% opacity) */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-black/30;
+  @apply bg-black/30;  /* Warna thumb saat hover (30% opacity) */
 }
 
-/* Focus styles for accessibility */
+/* Focus Styles for Accessibility */
+/* PENTING: Jangan hapus, penting untuk accessibility (keyboard navigation) */
+/* KUSTOMISASI: Ubah styling focus jika diperlukan */
 *:focus-visible {
   @apply outline-2 outline-offset-2 outline-black;
+  /* outline-2: Ketebalan outline 2px */
+  /* outline-offset-2: Jarak outline dari element 2px */
+  /* outline-black: Warna outline hitam */
 }
 
