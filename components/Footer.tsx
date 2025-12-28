@@ -1,51 +1,51 @@
 /**
  * Footer Component
  * 
- * Komponen footer yang ditampilkan di bagian bawah halaman.
- * Fitur:
- * - Brand/Logo section dengan deskripsi
- * - Quick Links (link cepat ke section utama)
+ * Footer component displayed at the bottom of the page.
+ * Features:
+ * - Brand/Logo section with description
+ * - Quick Links (quick links to main sections)
  * - Legal Links (Privacy, Terms, About)
- * - Copyright notice dengan tahun otomatis
- * - Animasi fade-in saat scroll ke footer
+ * - Copyright notice with automatic year
+ * - Fade-in animation when scrolling to footer
  * 
- * KUSTOMISASI MUDAH:
+ * EASY CUSTOMIZATION:
  * 
- * 1. Ubah Logo/Brand Name:
- *    - Baris 22: Ganti "LOGO" dengan nama brand Anda
+ * 1. Change Logo/Brand Name:
+ *    - Line 77: Replace "LOGO" with your brand name
  * 
- * 2. Ubah Deskripsi Brand:
- *    - Baris 23-25: Edit teks deskripsi sesuai brand Anda
+ * 2. Change Brand Description:
+ *    - Line 79-81: Edit description text according to your brand
  * 
- * 3. Ubah Quick Links:
- *    - Baris 38-52: Tambah/kurangi link sesuai kebutuhan
- *    - Pastikan href mengarah ke section yang ada (#features, #pricing, dll)
- *    - Pastikan teks link ada di messages/en.json dan messages/id.json → section "nav"
+ * 3. Change Quick Links:
+ *    - Line 94-113: Add/remove links as needed
+ *    - Make sure href points to existing sections (#features, #pricing, etc.)
+ *    - Make sure link text exists in messages/en.json and messages/id.json → "nav" section
  * 
- * 4. Ubah Legal Links:
- *    - Baris 66-80: Tambah/kurangi link legal
- *    - Ganti href="#" dengan URL halaman Privacy Policy, Terms, dll
- *    - Pastikan teks link ada di messages/en.json dan messages/id.json → section "footer.links"
+ * 4. Change Legal Links:
+ *    - Line 126-145: Add/remove legal links
+ *    - Replace href="#" with URL of Privacy Policy, Terms pages, etc.
+ *    - Make sure link text exists in messages/en.json and messages/id.json → "footer.links" section
  * 
- * 5. Ubah Nama Perusahaan di Copyright:
- *    - Baris 92: Ganti "Your Company" dengan nama perusahaan Anda
+ * 5. Change Company Name in Copyright:
+ *    - Line 159: Replace "Your Company" with your company name
  * 
- * 6. Ubah Warna Background:
- *    - Baris 11: Edit bg-gradient-to-br from-black via-gray-900 to-black
- *    - Contoh: from-blue-900 via-blue-800 to-blue-900 untuk biru
+ * 6. Change Background Color:
+ *    - Line 64: Edit bg-gradient-to-br from-black via-gray-900 to-black
+ *    - Example: from-blue-900 via-blue-800 to-blue-900 for blue
  * 
- * 7. Ubah Layout Grid:
- *    - Baris 13: grid-cols-1 md:grid-cols-4 → ubah angka untuk jumlah kolom
- *    - Baris 20: col-span-1 md:col-span-2 → ubah span untuk brand section
+ * 7. Change Grid Layout:
+ *    - Line 67: grid-cols-1 md:grid-cols-4 → change number for column count
+ *    - Line 75: col-span-1 md:col-span-2 → change span for brand section
  * 
- * PENTING:
- * - Pastikan semua teks yang menggunakan t() ada di file translation
- * - Link href harus valid (internal dengan # atau external dengan https://)
- * - Tahun copyright otomatis menggunakan new Date().getFullYear()
+ * IMPORTANT:
+ * - Make sure all text using t() exists in translation files
+ * - Link href must be valid (internal with # or external with https://)
+ * - Copyright year automatically uses new Date().getFullYear()
  * 
  * DEPENDENCIES:
- * - next-intl: untuk multi-language support
- * - framer-motion: untuk animasi fade-in
+ * - next-intl: for multi-language support
+ * - framer-motion: for fade-in animation
  * 
  * @returns {JSX.Element} Footer component
  */
@@ -56,55 +56,55 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
-  // Hook untuk mengambil terjemahan dari file messages
-  const t = useTranslations('footer');      // Translation untuk footer section
-  const tNav = useTranslations('nav');       // Translation untuk navigation (digunakan di Quick Links)
+  // Hook to get translations from messages files
+  const t = useTranslations('footer');      // Translation for footer section
+  const tNav = useTranslations('nav');       // Translation for navigation (used in Quick Links)
 
   return (
     <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Grid Layout: 1 kolom di mobile, 4 kolom di desktop */}
+        {/* Grid Layout: 1 column on mobile, 4 columns on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
-          {/* KUSTOMISASI: Ganti "LOGO" dan deskripsi di sini */}
+          {/* CUSTOMIZATION: Replace "LOGO" and description here */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}      // Mulai dari bawah dan invisible
-            whileInView={{ opacity: 1, y: 0 }}  // Animasi ke visible saat masuk viewport
-            viewport={{ once: true }}            // Animasi hanya sekali
-            transition={{ duration: 0.5 }}      // Durasi animasi
-            className="col-span-1 md:col-span-2" // Span 2 kolom di desktop
+            initial={{ opacity: 0, y: 20 }}      // Start from bottom and invisible
+            whileInView={{ opacity: 1, y: 0 }}  // Animate to visible when entering viewport
+            viewport={{ once: true }}            // Animate only once
+            transition={{ duration: 0.5 }}      // Animation duration
+            className="col-span-1 md:col-span-2" // Span 2 columns on desktop
           >
             <h3 className="text-2xl font-bold mb-4">LOGO</h3>
-            {/* KUSTOMISASI: Edit deskripsi brand di sini */}
+            {/* CUSTOMIZATION: Edit brand description here */}
             <p className="text-white/70 max-w-md">
               Transforming businesses with innovative solutions. Built for the community, driven by excellence.
             </p>
           </motion.div>
 
           {/* Quick Links Section */}
-          {/* KUSTOMISASI: Tambah/kurangi link di sini */}
+          {/* CUSTOMIZATION: Add/remove links here */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }} // Delay sedikit untuk efek stagger
+            transition={{ duration: 0.5, delay: 0.1 }} // Slight delay for stagger effect
             className="space-y-4"
           >
             <h4 className="font-semibold">Quick Links</h4>
             <ul className="space-y-2">
-              {/* Link ke Features section */}
+              {/* Link to Features section */}
               <li>
                 <a href="#features" className="text-white/70 hover:text-white transition-colors">
                   {tNav('features')}
                 </a>
               </li>
-              {/* Link ke Pricing section */}
+              {/* Link to Pricing section */}
               <li>
                 <a href="#pricing" className="text-white/70 hover:text-white transition-colors">
                   {tNav('pricing')}
                 </a>
               </li>
-              {/* Link ke Contact section */}
+              {/* Link to Contact section */}
               <li>
                 <a href="#contact" className="text-white/70 hover:text-white transition-colors">
                   {tNav('contact')}
@@ -114,29 +114,29 @@ export default function Footer() {
           </motion.div>
 
           {/* Legal Links Section */}
-          {/* KUSTOMISASI: Tambah/kurangi link legal, ganti href dengan URL yang valid */}
+          {/* CUSTOMIZATION: Add/remove legal links, replace href with valid URLs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }} // Delay lebih lama untuk efek stagger
+            transition={{ duration: 0.5, delay: 0.2 }} // Longer delay for stagger effect
             className="space-y-4"
           >
             <h4 className="font-semibold">Legal</h4>
             <ul className="space-y-2">
-              {/* KUSTOMISASI: Ganti href="#" dengan URL halaman Privacy Policy */}
+              {/* CUSTOMIZATION: Replace href="#" with Privacy Policy page URL */}
               <li>
                 <a href="#" className="text-white/70 hover:text-white transition-colors">
                   {t('links.privacy')}
                 </a>
               </li>
-              {/* KUSTOMISASI: Ganti href="#" dengan URL halaman Terms of Service */}
+              {/* CUSTOMIZATION: Replace href="#" with Terms of Service page URL */}
               <li>
                 <a href="#" className="text-white/70 hover:text-white transition-colors">
                   {t('links.terms')}
                 </a>
               </li>
-              {/* KUSTOMISASI: Ganti href="#" dengan URL halaman About */}
+              {/* CUSTOMIZATION: Replace href="#" with About page URL */}
               <li>
                 <a href="#" className="text-white/70 hover:text-white transition-colors">
                   {t('links.about')}
@@ -147,7 +147,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright Section */}
-        {/* KUSTOMISASI: Ganti "Your Company" dengan nama perusahaan Anda */}
+        {/* CUSTOMIZATION: Replace "Your Company" with your company name */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -155,11 +155,10 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-8 pt-8 border-t border-white/10 text-center text-white/70"
         >
-          {/* Tahun otomatis menggunakan new Date().getFullYear() */}
+          {/* Year automatically uses new Date().getFullYear() */}
           <p>&copy; {new Date().getFullYear()} Your Company. {t('rights')}.</p>
         </motion.div>
       </div>
     </footer>
   );
 }
-
